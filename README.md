@@ -2,17 +2,23 @@
 
 ## Requirements
 
-- [PHP](https://www.php.net/) 8.2 or higher.
-
-- [Composer](https://getcomposer.org/).
-
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 
 ## Installation
 
 1) Clone [this repository](https://github.com/alejandro-sl-secret-source/laravel-demo).
-2) Enter into project directory (`cd laravel-demo`) and run `composer install`.
+2) Enter into project directory (`cd laravel-demo`) and run:
+```
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+```
+This will fetch the packages dependencies without the need of having PHP and Composer installed in the host machine.
+
 3) Create `.env` file copying it from `.env.example`. 
 4) Set database default parameters in `.env` file:
     ```

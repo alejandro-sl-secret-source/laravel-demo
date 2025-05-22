@@ -12,3 +12,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - README.md file to remove the defaults Laravel contents and include the project installation instructions.
+- README.md file to update the installation instructions without PHP and Composer in the host system.
