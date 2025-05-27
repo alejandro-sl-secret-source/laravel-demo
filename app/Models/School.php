@@ -11,7 +11,7 @@ class School extends Model
     use HasFactory;
 
     /**
-     * Class Job
+     * Class School
      * @package App\Models
      * @property int $id
      * @property string $name
