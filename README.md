@@ -39,3 +39,11 @@ This will fetch the packages dependencies without the need of having PHP and Com
 ## Laravel Documentation
 Read the [Laravel Documentation](https://laravel.com/docs/12.x) as much as you need it.
 
+## Recommended Visual Studio Code extensions
+- [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
+- [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug)
+- [Laravel](https://marketplace.visualstudio.com/items?itemName=laravel.vscode-laravel)
+- [Laravel Extension Pack](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-extension-pack)
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+
+
