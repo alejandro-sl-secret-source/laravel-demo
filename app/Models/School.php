@@ -29,6 +29,6 @@ class School extends Model
         'name',
         'address',
         'capacity',
-        'user_id'
+        'user_id',
     ];
 }
