@@ -3,7 +3,7 @@
     <body>
         <div>
             <h1>Create New Shop</h1>
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('shops.store') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div>
                     <label for="name">Name:</label>

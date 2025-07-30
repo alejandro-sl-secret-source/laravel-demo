@@ -13,10 +13,16 @@ Route::get('/example', [ExampleController::class, 'index'])
 
 Route::prefix('/shops')->group(function() {
     Route::get('/', [ShopController::class, 'index'])
-    ->name('shops.index');
+        ->name('shops.index');
 
     Route::get('/create', [ShopController::class, 'create'])
         ->name('shops.create');
+
+    Route::post('/store', [ShopController::class, 'store'])
+        ->name('shops.store');
+
+    Route::get('/{id}', [ShopController::class, 'show'])
+        ->name('shops.show');
 });
 
 

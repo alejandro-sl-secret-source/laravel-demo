@@ -11,7 +11,7 @@ class StoreShopRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,20 @@ class StoreShopRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required|email',
+            'is_active' => 'boolean',
+        ];
+    }
+
+    public function messages(): array
+    {
+        // TODO: flash validaion messages in create form page
+        return [
+            'name.required' => 'The shop name is required.',
+            'email.required' => 'The shop email is required.',
+            'email.email' => 'The shop email must be a valid email address.',
+            'is_active.boolean' => 'The active status must be true or false.',
         ];
     }
 }

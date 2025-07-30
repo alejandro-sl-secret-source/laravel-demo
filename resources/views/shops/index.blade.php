@@ -14,7 +14,7 @@
                 <tbody>
                     @foreach ($shops as $shop)
                         <tr>
-                            <td>{{ $shop->name }}</td>
+                            <td><a href="{{ route('shops.show', $shop->id) }}">{{ $shop->name }}</a></td>
                             <td>{{ $shop->email }}</td>
                             <td>{{ $shop->is_active ? 'Yes' : 'No' }}</td>
                         </tr>
