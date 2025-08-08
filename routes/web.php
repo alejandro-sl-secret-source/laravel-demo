@@ -23,6 +23,15 @@ Route::prefix('/shops')->group(function() {
 
     Route::get('/{id}', [ShopController::class, 'show'])
         ->name('shops.show');
+
+    Route::get('/edit/{id}', [ShopController::class, 'edit'])
+        ->name('shops.edit');
+
+    Route::post('/update/{id}', [ShopController::class, 'update'])
+        ->name('shops.update');
+
+    Route::delete('/delete/{id}', [ShopController::class, 'destroy'])
+        ->name('shops.delete');
 });
 
 

@@ -63,24 +63,46 @@ class ShopController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Shop $shop)
+    public function edit(int $id)
     {
-        //
+        $shop = Shop::findOrFail($id);
+
+        return view('shops.edit', compact('shop'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateShopRequest $request, Shop $shop)
+    public function update(StoreShopRequest $request, int $id)
     {
-        //
+        $shop = Shop::findOrFail($id);
+
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $isActive = boolval($request->get('is_active'));
+
+        $shop->name = $name;
+        $shop->email = $email;
+        $shop->is_active = $isActive;
+
+        $shop->save();
+
+        return redirect()
+         ->route('shops.index')
+         ->with('success', 'Shop edited successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Shop $shop)
+    public function destroy(int $id)
     {
-        //
+        $shop = Shop::findOrFail($id);
+
+        $shop->delete();
+
+        return redirect()
+         ->route('shops.index')
+         ->with('success', 'Shop deleted successfully!');
     }
 }

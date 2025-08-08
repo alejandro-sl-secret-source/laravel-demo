@@ -9,6 +9,8 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Active</th>
+                        <th>Actions</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -17,6 +19,18 @@
                             <td><a href="{{ route('shops.show', $shop->id) }}">{{ $shop->name }}</a></td>
                             <td>{{ $shop->email }}</td>
                             <td>{{ $shop->is_active ? 'Yes' : 'No' }}</td>
+                            <td>
+                                <a href="{{ route('shops.edit', $shop->id) }}">Edit</a>
+                                <br/>
+                                <form method="POST" action="{{ route('shops.delete', $shop->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+
                         </tr>
                     @endforeach
             </table>
