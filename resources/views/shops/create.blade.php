@@ -1,17 +1,17 @@
 @include('common.header')
 
-    @if ($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li style="margin-top: 10px;">{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
     <body>
         <div>
+            @if ($errors->any())
+            <div style="color: red;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="margin-top: 10px;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
             <h1>Create New Shop</h1>
             <form method="POST" action="{{ route('shops.store') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
