@@ -12,16 +12,9 @@
             </div>
             @endif
 
-            <h1>Create New Shop</h1>
-            <form method="POST" action="{{ route('shops.store') }}">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div style="margin-top: 20px">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    @error('name')
-                        <div style="margin-top: 10px; color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
+            <h1>Login</h1>
+            <form method="POST" action="{{ route('login.submit') }}">
+                @csrf
                 <div style="margin-top: 20px">
                     <label for="email">Email:</label>
                     <input type="text" id="email" name="email" required>
@@ -30,16 +23,15 @@
                     @enderror
                 </div>
                 <div style="margin-top: 20px">
-                    <label for="is_active">Active</label>
-
-                    <input type="radio" id="is_active" name="is_active" value="1">Yes
-                    <input type="radio" id="is_active" name="is_active" value="0">No
-                    @error('is_active')
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    @error('password')
                         <div style="margin-top: 10px; color: red;">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div style="margin-top: 20px">
-                    <button type="submit">Create Shop</button>
+                    <button type="submit">Login</button>
                 </div>
             </form>
         </div>

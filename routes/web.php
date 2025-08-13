@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,6 +12,15 @@ Route::get('/', function () {
 Route::get('/example', [ExampleController::class, 'index'])
     ->name('example.index');
 
+
+// Auth routes
+Route::get('/login', [UserController::class, 'showLoginForm'])
+    ->name('login');
+
+Route::post('/', [UserController::class, 'login'])
+    ->name('login.submit');
+
+// Shops CRUD route
 Route::prefix('/shops')->group(function() {
     Route::get('/', [ShopController::class, 'index'])
         ->name('shops.index');
@@ -25,7 +35,8 @@ Route::prefix('/shops')->group(function() {
         ->name('shops.show');
 
     Route::get('/edit/{id}', [ShopController::class, 'edit'])
-        ->name('shops.edit');
+        ->name('shops.edit')
+        ->middleware('auth:sanctum');
 
     Route::post('/update/{id}', [ShopController::class, 'update'])
         ->name('shops.update');
@@ -33,5 +44,4 @@ Route::prefix('/shops')->group(function() {
     Route::delete('/delete/{id}', [ShopController::class, 'destroy'])
         ->name('shops.delete');
 });
-
 
