@@ -31,8 +31,8 @@
                 </div>
                 <div style="margin-top: 20px">
                     <label for="is_active">Active</label>
-                    <input type="checkbox" id="is_active" name="is_active" value="1" @if($shop->is_active)checked @endif">Yes
-                    <input type="checkbox" id="is_active" name="is_active" value="0" @if(!$shop->is_active)checked @endif">No
+                    <input type="radio" id="is_active" name="is_active" value="1" @if($shop->is_active)checked @endif>Yes
+                    <input type="radio" id="is_active" name="is_active" value="0" @if(!$shop->is_active)checked @endif>No
                     @error('is_active')
                         <div style="margin-top: 10px; color: red;">{{ $message }}</div>
                     @enderror

@@ -22,7 +22,7 @@
                             <td>
                                 <a href="{{ route('shops.edit', $shop->id) }}">Edit</a>
                                 <br/>
-                                <form method="POST" action="{{ route('shops.delete', $shop->id) }}">
+                                <form method="POST" id="delete-shop-form" action="{{ route('shops.delete', $shop->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="delete-link">
@@ -54,5 +54,15 @@
             padding: 0;
         }
     </style>
+
+    <script>
+        document.querySelectorAll("#delete-shop-form").forEach(function(form) {
+            form.addEventListener("submit", function(event) {
+                if (!confirm("Are you sure?")) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 
 </html>
