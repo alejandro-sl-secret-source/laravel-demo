@@ -25,7 +25,7 @@
                                 <form method="POST" action="{{ route('shops.delete', $shop->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">
+                                    <button type="submit" class="delete-link">
                                         Delete
                                     </button>
                                 </form>
@@ -41,4 +41,18 @@
 
         </div>
     </body>
+
+    <style>
+        .delete-link {
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            color: blue;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            padding: 0;
+        }
+    </style>
+
 </html>
