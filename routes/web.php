@@ -16,6 +16,8 @@ Route::get('/example', [ExampleController::class, 'index'])
 // Auth routes
 Route::get('/login', [UserController::class, 'showLoginForm'])
     ->name('login');
+Route::get('/logout', [UserController::class, 'logout'])
+    ->name('logout');
 
 Route::post('/', [UserController::class, 'login'])
     ->name('login.submit');

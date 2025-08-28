@@ -2,16 +2,11 @@
 
     <body>
         <div>
-            @if ($errors->any())
-            <div style="color: red;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li style="margin-top: 10px;">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @if (session('success'))
+                <div style="color: green; margin: 15px 0;">
+                    {{ session('success') }}
+                </div>
             @endif
-
             <h1>Login</h1>
             <form method="POST" action="{{ route('login.submit') }}">
                 @csrf

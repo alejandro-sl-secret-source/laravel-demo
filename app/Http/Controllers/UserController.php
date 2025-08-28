@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -15,23 +17,36 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function login($request): JsonResponse
+    public function login(LoginRequest $request): View|RedirectResponse
     {
-        $email = $request->get('name');
+        // TODO: create custom request and validate credentials there
+        $email = $request->get('email');
         $password = $request->get('password');
 
         $user = User::where('email', $email)->first();
 
         if(!$user || !Hash::check($password, $user->password)){
-            return response()->json([
-                'message' => 'Invalid Credentials'
-            ],401);
+            return view('login');
         }
 
         $token = $user->createToken($user->email.'-AuthToken')->plainTextToken;
 
-        return response()->json([
-            'access_token' => $token,
-        ]);
+        // TODO: Instead of JSON return redirect to shops list page
+        return redirect()
+            ->route('shops.index')
+            ->with('success', 'Logged in successfully!');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()
+            ->route('login')
+            ->with('success', 'Logged out successfully!');
     }
 }

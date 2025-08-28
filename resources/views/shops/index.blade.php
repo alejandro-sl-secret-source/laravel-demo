@@ -1,7 +1,15 @@
 @include('common.header')
 
     <body>
+        <nav>
+            <a href="{{ route('logout') }}">Log out</a>
+        </nav>
         <div>
+            @if (session('success'))
+                <div style="color: green; margin: 15px 0;">
+                    {{ session('success') }}
+                </div>
+            @endif
             <h1>Shops</h1>
             <table>
                 <thead>
